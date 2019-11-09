@@ -6,3 +6,17 @@
 (vals (filter (fn [[k v]]
   (ends-with? k "a"))
     students))
+;;count how many grades there are
+(count (vals (filter (fn [[k v]]
+  (ends-with? k "a"))
+    students)))
+;;get value that will be divided
+(reduce + (vals (filter (fn [[k v]]
+  (ends-with? k "a"))
+    students)))
+;;get average
+(float (/ (reduce + (vals (filter (fn [[k v]]
+  (ends-with? k "a"))
+    students))) (count (vals (filter (fn [[k v]]
+  (ends-with? k "a"))
+    students)))))
