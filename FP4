@@ -2,10 +2,7 @@
 "Anja" 10 "Lauris" 6 "Sandra" 8 "Krišjanis" 9})
 ;;get ONLY pairs where the first element ends with a
 (use 'clojure.string)
-(ends-with? "Inese" "a")
-(filter (fn [[k v]]
+;;get the grades from these pairs
+(vals (filter (fn [[k v]]
   (ends-with? k "a"))
-    students);
-;;example
-(filter (fn [[k v]] (even? k))
-    {1 "a", 2 "b", 3 "c", 4 "d"})
+    students))
