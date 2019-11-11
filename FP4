@@ -1,22 +1,18 @@
+(use 'clojure.string)
+
 (def students {"Inese" 10 "Vasja" 8 "Petja" 4 "Natasha" 7
 "Anja" 10 "Lauris" 6 "Sandra" 8 "Krišjanis" 9})
-;;get ONLY pairs where the first element ends with a
-(use 'clojure.string)
-;;get the grades from these pairs
-(vals (filter (fn [[k v]]
-  (ends-with? k "a"))
-    students))
-;;count how many grades there are
-(count (vals (filter (fn [[k v]]
-  (ends-with? k "a"))
-    students)))
-;;get value that will be divided
-(reduce + (vals (filter (fn [[k v]]
-  (ends-with? k "a"))
-    students)))
-;;get average
-(float (/ (reduce + (vals (filter (fn [[k v]]
-  (ends-with? k "a"))
-    students))) (count (vals (filter (fn [[k v]]
-  (ends-with? k "a"))
-    students)))))
+
+(defn filtered-students []
+  (vals
+    (filter
+      (fn [[k v]]
+        (ends-with? k "a"))
+      students)))
+
+(defn average-grade [] (float 
+  ( /
+    (reduce + (filtered-students))
+    (count (filtered-students)))))
+
+(str "The average grade among students whose names end with 'a' is " (average-grade))
